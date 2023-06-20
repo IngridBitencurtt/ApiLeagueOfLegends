@@ -25,7 +25,7 @@ public class HttpCampeaoAdapterIn {
 
 
     @GetMapping
-    public ResponseEntity<List<CampeaoDto>> findAllCampeao(
+    public ResponseEntity<List<CampeaoDto>> consultaGeralCampeoes(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "gender", required = false) String gender,
             @RequestParam(value = "position", required = false) String position,
@@ -44,7 +44,6 @@ public class HttpCampeaoAdapterIn {
             CampeaoDto campeaoDto = CampeaoDto.from(campeao);
             campeaoDtoList.add(campeaoDto);
         }
-
         return ResponseEntity.ok(campeaoDtoList);
     }
 

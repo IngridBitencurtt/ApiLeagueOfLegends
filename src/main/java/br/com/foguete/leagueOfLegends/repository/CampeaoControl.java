@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import org.springframework.data.annotation.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Document(collection = "league-of-legends")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -16,6 +19,7 @@ import java.util.Objects;
 public class CampeaoControl {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String nome;
@@ -148,7 +152,6 @@ public class CampeaoControl {
                 .setTipoDeAlcance(campeao.getRangeType())
                 .setRegiao(campeao.getRegion())
                 .setAnoDeLancamento(campeao.getLocationDateTimeyearOfLaunch());
-
 
     }
 }
