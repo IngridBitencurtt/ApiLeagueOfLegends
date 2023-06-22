@@ -2,8 +2,6 @@ package br.com.foguete.leagueOfLegends.domain;
 
 import br.com.foguete.leagueOfLegends.repository.CampeaoControl;
 
-import java.time.LocalDateTime;
-
 public class Campeao {
 
     private String name;
@@ -13,7 +11,7 @@ public class Campeao {
     private String resource;
     private String rangeType;
     private String region;
-    private LocalDateTime LocationDateTimeyearOfLaunch;
+    private Integer LocationDateTimeyearOfLaunch;
 
 
     public Campeao(String name,
@@ -23,7 +21,7 @@ public class Campeao {
                    String resource,
                    String rangeType,
                    String region,
-                   LocalDateTime locationDateTimeyearOfLaunch) {
+                   Integer locationDateTimeyearOfLaunch) {
         this.name = name;
         this.gender = gender;
         this.position = position;
@@ -46,7 +44,8 @@ public class Campeao {
                 .setSpecies(campeaoControl.getEspecie())
                 .setResource(campeaoControl.getRecurso())
                 .setRangeType(campeaoControl.getTipoDeAlcance())
-                .setRegion(campeaoControl.getRegiao());
+                .setRegion(campeaoControl.getRegiao())
+                .setLocationDateTimeyearOfLaunch(campeaoControl.getAnoDeLancamento());
     }
 
     public String getName() {
@@ -112,11 +111,11 @@ public class Campeao {
         return this;
     }
 
-    public LocalDateTime getLocationDateTimeyearOfLaunch() {
+    public Integer getLocationDateTimeyearOfLaunch() {
         return LocationDateTimeyearOfLaunch;
     }
 
-    public Campeao setLocationDateTimeyearOfLaunch(LocalDateTime locationDateTimeyearOfLaunch) {
+    public Campeao setLocationDateTimeyearOfLaunch(Integer locationDateTimeyearOfLaunch) {
         LocationDateTimeyearOfLaunch = locationDateTimeyearOfLaunch;
         return this;
     }

@@ -3,8 +3,8 @@ package br.com.foguete.leagueOfLegends.adapter.out;
 import br.com.foguete.leagueOfLegends.domain.Campeao;
 import br.com.foguete.leagueOfLegends.repository.CampeaoControl;
 
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface CampeaoPortOut {
 
@@ -15,5 +15,10 @@ public interface CampeaoPortOut {
                                         String resource,
                                         String rangeType,
                                         String region,
-                                        LocalDateTime locationDateTimeyearOfLaunch);
+                                        Integer locationDateTimeyearOfLaunch);
+
+    Optional<CampeaoControl> findByNome(String nome);
+
+    String criaCampeao(Campeao campeao);
+
 }

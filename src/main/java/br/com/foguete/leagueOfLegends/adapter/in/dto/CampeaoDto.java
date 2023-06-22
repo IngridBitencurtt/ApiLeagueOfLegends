@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-import java.time.LocalDateTime;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -25,7 +24,7 @@ public class CampeaoDto {
 
     private  String regiao;
 
-    private LocalDateTime anoDeLancamento;
+    private Integer anoDeLancamento;
 
 
     public String getNome() {
@@ -91,11 +90,11 @@ public class CampeaoDto {
         return this;
     }
 
-    public LocalDateTime getAnoDeLancamento() {
+    public Integer getAnoDeLancamento() {
         return anoDeLancamento;
     }
 
-    public CampeaoDto setAnoDeLancamento(LocalDateTime anoDeLancamento) {
+    public CampeaoDto setAnoDeLancamento(Integer anoDeLancamento) {
         this.anoDeLancamento = anoDeLancamento;
         return this;
     }
@@ -110,7 +109,7 @@ public class CampeaoDto {
                       String recurso,
                       String tipoDeAlcance,
                       String regiao,
-                      LocalDateTime anoDeLancamento) {
+                      Integer anoDeLancamento) {
         this.nome = nome;
         this.genero = genero;
         this.posicao = posicao;

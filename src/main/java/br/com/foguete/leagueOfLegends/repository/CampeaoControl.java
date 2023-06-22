@@ -7,11 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import org.springframework.data.annotation.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDateTime;
 
 @Document(collection = "league-of-legends")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -19,7 +15,6 @@ import java.time.LocalDateTime;
 public class CampeaoControl {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String nome;
@@ -36,7 +31,7 @@ public class CampeaoControl {
 
     private String regiao;
 
-    private LocalDateTime anoDeLancamento;
+    private Integer anoDeLancamento;
 
     public CampeaoControl(String id,
                           String nome,
@@ -46,7 +41,7 @@ public class CampeaoControl {
                           String recurso,
                           String tipoDeAlcance,
                           String regiao,
-                          LocalDateTime anoDeLancamento) {
+                          Integer anoDeLancamento) {
         this.id = id;
         this.nome = nome;
         this.genero = genero;
@@ -130,11 +125,11 @@ public class CampeaoControl {
         return this;
     }
 
-    public LocalDateTime getAnoDeLancamento() {
+    public Integer getAnoDeLancamento() {
         return anoDeLancamento;
     }
 
-    public CampeaoControl setAnoDeLancamento(LocalDateTime anoDeLancamento) {
+    public CampeaoControl setAnoDeLancamento(Integer anoDeLancamento) {
         this.anoDeLancamento = anoDeLancamento;
         return this;
     }
@@ -142,7 +137,7 @@ public class CampeaoControl {
     public CampeaoControl() {
     }
 
-    public static CampeaoControl CampeaoControl(Campeao campeao) {
+    public static CampeaoControl campeaoControl(Campeao campeao) {
         return new CampeaoControl()
                 .setNome(campeao.getName())
                 .setGenero(campeao.getGender())
