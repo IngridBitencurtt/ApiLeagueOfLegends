@@ -78,7 +78,7 @@ public class HttpCampeaoAdapterIn {
     }
 
     @GetMapping("/nome/{nome}")
-    public ResponseEntity<List<CampeaoDto>> buscaCampeoesPorNome(@PathVariable("nome") String nome) {
+    public ResponseEntity<List<String>> buscaNomeCampeoesPorNome(@PathVariable("nome") String nome) {
         List<Campeao> findAllCampeaoReturn = this.campeaoPortIn.findAllCampeao(nome
                 , null
                 , null
@@ -88,15 +88,15 @@ public class HttpCampeaoAdapterIn {
                 , null
                 , null);
 
-        List<CampeaoDto> campeaoDtoList = new ArrayList<>();
+        List<String> nomeCampeaoList = new ArrayList<>();
 
         for (Campeao campeao : findAllCampeaoReturn) {
-            CampeaoDto campeaoDto = CampeaoDto.from(campeao);
-            campeaoDtoList.add(campeaoDto);
+            nomeCampeaoList.add(campeao.getName());
         }
 
-        return ResponseEntity.ok(campeaoDtoList);
+        return ResponseEntity.ok(nomeCampeaoList);
     }
+
 
     @DeleteMapping("/nome/{nome}")
     public ResponseEntity<Void> deletaCampeaoPorNome(@PathVariable("nome") String nome) {
