@@ -56,9 +56,15 @@ public class HttpCampeaoAdapterIn {
                 ,campeaoDto.getRegiao()
                 ,campeaoDto.getAnoDeLancamento());
 
-        String idPersonagem = this.campeaoPortIn.createCampeao(campeao);
+        String idCampeao = this.campeaoPortIn.createCampeao(campeao);
 
-        return  ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(idPersonagem).toUri()).build();
+        return  ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(idCampeao).toUri()).build();
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<CampeaoDto> buscaCampeaoPorId(@PathVariable("id") String id){
+
+        Campeao campeao = this.campeaoPortIn.buscaPorId(id);
+        return ResponseEntity.ok(CampeaoDto.from(campeao));
     }
 
 

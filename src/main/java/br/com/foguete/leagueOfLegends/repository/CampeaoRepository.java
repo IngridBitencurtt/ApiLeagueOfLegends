@@ -8,5 +8,6 @@ import java.util.Optional;
 @Repository
 public interface CampeaoRepository  extends MongoRepository<CampeaoControl, String> {
     Optional<CampeaoControl> findByNome(String nome);
+    Optional<CampeaoControl> findById (String id);
 }
 

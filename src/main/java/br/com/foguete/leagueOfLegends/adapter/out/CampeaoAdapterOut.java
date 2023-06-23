@@ -56,6 +56,18 @@ public class CampeaoAdapterOut implements CampeaoPortOut {
         return campeaoSave.getId();
     }
 
+    @Override
+    public Campeao buscaPorId(String id) {
+        Optional<CampeaoControl> campeaoControlOptional = this.campeaoRepository.findById(id);
+
+        if (campeaoControlOptional.isEmpty()){
+            System.out.println("404");
+        }
+
+        CampeaoControl campeaoControl = campeaoControlOptional.get();
+        return Campeao.from(campeaoControl);
+    }
+
 
     private Query buildQuery(String name,
                              String gender,
@@ -69,25 +81,26 @@ public class CampeaoAdapterOut implements CampeaoPortOut {
 
 
         if (!ObjectUtils.isEmpty(name)) {
-            query.addCriteria(Criteria.where("nome").is(name));
+            query.addCriteria(Criteria.where("nome").regex(name, "i"));
+
         }
         if (!ObjectUtils.isEmpty(gender)) {
-            query.addCriteria(Criteria.where("genero").is(gender));
+            query.addCriteria(Criteria.where("genero").regex(gender, "i"));
         }
         if (!ObjectUtils.isEmpty(position)) {
-            query.addCriteria(Criteria.where("posicao").is(position));
+            query.addCriteria(Criteria.where("posicao").regex(position, "i"));
         }
         if (!ObjectUtils.isEmpty(species)) {
-            query.addCriteria(Criteria.where("especie").is(species));
+            query.addCriteria(Criteria.where("especie").regex(species, "i"));
         }
         if (!ObjectUtils.isEmpty(resource)) {
-            query.addCriteria(Criteria.where("recurso").is(resource));
+            query.addCriteria(Criteria.where("recurso").regex(resource, "i"));
         }
         if (!ObjectUtils.isEmpty(rangeType)) {
-            query.addCriteria(Criteria.where("tipoDeAlcance").is(rangeType));
+            query.addCriteria(Criteria.where("tipoDeAlcance").regex(rangeType, "i"));
         }
         if (!ObjectUtils.isEmpty(region)) {
-            query.addCriteria(Criteria.where("regiao").is(region));
+            query.addCriteria(Criteria.where("regiao").regex(region, "i"));
         }
         if (!ObjectUtils.isEmpty(locationDateTimeyearOfLaunch)) {
             query.addCriteria(Criteria.where("anoDeLancamento").is(locationDateTimeyearOfLaunch));

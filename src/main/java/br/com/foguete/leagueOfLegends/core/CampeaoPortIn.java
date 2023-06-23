@@ -17,4 +17,5 @@ public interface CampeaoPortIn {
 
     String createCampeao(Campeao campeao);
 
+    Campeao buscaPorId(String id);
 }

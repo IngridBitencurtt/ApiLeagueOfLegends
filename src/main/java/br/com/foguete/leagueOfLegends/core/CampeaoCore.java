@@ -57,4 +57,11 @@ public class CampeaoCore implements CampeaoPortIn{
         }
         return this.campeaoPortOut.criaCampeao(campeao);
     }
+
+    @Override
+    public Campeao buscaPorId(String id) {
+        Campeao campeao =  this.campeaoPortOut.buscaPorId(id);
+
+        return campeao;
+    }
 }
