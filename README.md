@@ -66,3 +66,5 @@ Este repositório foi criado com o intuito de testar meus conhecimentos obtidos 
 - Body: CampeaoDto object
 - Response: HTTP 204 No Content
 
+![image](https://github.com/IngridBitencurtt/ApiLeagueOfLegends/assets/84420903/9d6fce58-d816-4e70-b1ec-4f8f33bc9c37)
+
