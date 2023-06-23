@@ -22,4 +22,6 @@ public interface CampeaoPortOut {
     String criaCampeao(Campeao campeao);
 
     Campeao buscaPorId(String id);
+
+    void deletaCampeao(String id);
 }

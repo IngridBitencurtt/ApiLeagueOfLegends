@@ -46,27 +46,33 @@ public class HttpCampeaoAdapterIn {
     }
 
     @PostMapping
-    public  ResponseEntity<String> criacaoCampeao(@RequestBody @Valid CampeaoDto campeaoDto){
+    public ResponseEntity<String> criacaoCampeao(@RequestBody @Valid CampeaoDto campeaoDto) {
         Campeao campeao = new Campeao(campeaoDto.getNome()
-                ,campeaoDto.getGenero()
-                ,campeaoDto.getPosicao()
-                ,campeaoDto.getEspecie()
-                ,campeaoDto.getRecurso()
-                ,campeaoDto.getTipoDeAlcance()
-                ,campeaoDto.getRegiao()
-                ,campeaoDto.getAnoDeLancamento());
+                , campeaoDto.getGenero()
+                , campeaoDto.getPosicao()
+                , campeaoDto.getEspecie()
+                , campeaoDto.getRecurso()
+                , campeaoDto.getTipoDeAlcance()
+                , campeaoDto.getRegiao()
+                , campeaoDto.getAnoDeLancamento());
 
         String idCampeao = this.campeaoPortIn.createCampeao(campeao);
 
-        return  ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(idCampeao).toUri()).build();
+        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(idCampeao).toUri()).build();
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<CampeaoDto> buscaCampeaoPorId(@PathVariable("id") String id){
+    public ResponseEntity<CampeaoDto> buscaCampeaoPorId(@PathVariable("id") String id) {
 
         Campeao campeao = this.campeaoPortIn.buscaPorId(id);
         return ResponseEntity.ok(CampeaoDto.from(campeao));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletaCampeaoPorId(@PathVariable("id") String id) {
 
+        this.campeaoPortIn.deletaCampeao(id);
 
+        return ResponseEntity.noContent().build();
+    }
 }

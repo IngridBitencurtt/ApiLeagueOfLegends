@@ -1,9 +1,11 @@
 package br.com.foguete.leagueOfLegends.adapter.out;
 
 
+import br.com.foguete.leagueOfLegends.adapter.in.exception.NotFoundException;
 import br.com.foguete.leagueOfLegends.domain.Campeao;
 import br.com.foguete.leagueOfLegends.repository.CampeaoControl;
 import br.com.foguete.leagueOfLegends.repository.CampeaoRepository;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -61,11 +63,19 @@ public class CampeaoAdapterOut implements CampeaoPortOut {
         Optional<CampeaoControl> campeaoControlOptional = this.campeaoRepository.findById(id);
 
         if (campeaoControlOptional.isEmpty()){
-            System.out.println("404");
+            throw new NotFoundException();
         }
 
         CampeaoControl campeaoControl = campeaoControlOptional.get();
         return Campeao.from(campeaoControl);
+    }
+
+    @Override
+    public void deletaCampeao(String id) {
+        CampeaoControl campeaoControl = this.campeaoRepository.findById(id)
+                .orElseThrow(NotFoundException::new);
+
+        this.campeaoRepository.delete(campeaoControl);
     }
 
 

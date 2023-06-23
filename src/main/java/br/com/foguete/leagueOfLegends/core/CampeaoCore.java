@@ -1,5 +1,6 @@
 package br.com.foguete.leagueOfLegends.core;
 
+import br.com.foguete.leagueOfLegends.adapter.in.exception.BusinessException;
 import br.com.foguete.leagueOfLegends.adapter.out.CampeaoPortOut;
 import br.com.foguete.leagueOfLegends.domain.Campeao;
 import br.com.foguete.leagueOfLegends.repository.CampeaoControl;
@@ -53,7 +54,7 @@ public class CampeaoCore implements CampeaoPortIn{
     public String createCampeao(Campeao campeao) {
         Optional<CampeaoControl> findNome = this.campeaoPortOut.findByNome(campeao.getName());
         if (findNome.isPresent()){
-            System.out.println("Campeao já existe");
+            throw new BusinessException("Campão " + campeao.getName() + " Já existe" );
         }
         return this.campeaoPortOut.criaCampeao(campeao);
     }
@@ -63,5 +64,11 @@ public class CampeaoCore implements CampeaoPortIn{
         Campeao campeao =  this.campeaoPortOut.buscaPorId(id);
 
         return campeao;
+    }
+
+    @Override
+    public void deletaCampeao(String id) {
+        this.campeaoPortOut.deletaCampeao(id);
+
     }
 }
