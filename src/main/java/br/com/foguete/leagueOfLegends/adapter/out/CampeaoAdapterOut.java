@@ -86,6 +86,15 @@ public class CampeaoAdapterOut implements CampeaoPortOut {
         this.campeaoRepository.delete(campeaoControl);
     }
 
+    @Override
+    public void atualizaCampeaoNome(String nome, Campeao campeao) {
+        CampeaoControl campeaoControl = this.campeaoRepository.findByNome(nome)
+                .orElseThrow(NotFoundException::new);
+
+        CampeaoControl campeaoAtualizado = CampeaoControl.atualizaCampeao(campeaoControl, campeao);
+        this.campeaoRepository.save(campeaoAtualizado);
+    }
+
 
     private Query buildQuery(String name,
                              String gender,

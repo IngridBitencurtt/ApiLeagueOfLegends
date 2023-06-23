@@ -1,5 +1,6 @@
 package br.com.foguete.leagueOfLegends.repository;
 
+import br.com.foguete.leagueOfLegends.domain.Campeao;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

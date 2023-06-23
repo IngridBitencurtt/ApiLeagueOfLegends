@@ -53,6 +53,18 @@ public class CampeaoControl {
         this.anoDeLancamento = anoDeLancamento;
     }
 
+    public static CampeaoControl atualizaCampeao(CampeaoControl campeaoControl, Campeao campeao) {
+        return campeaoControl
+                .setNome(campeao.getName())
+                .setGenero(campeao.getGender())
+                .setPosicao(campeao.getPosition())
+                .setEspecie(campeao.getSpecies())
+                .setRecurso(campeao.getResource())
+                .setTipoDeAlcance(campeao.getRangeType())
+                .setRegiao(campeao.getRegion())
+                .setAnoDeLancamento(campeao.getLocationDateTimeyearOfLaunch());
+    }
+
     public String getId() {
         return id;
     }

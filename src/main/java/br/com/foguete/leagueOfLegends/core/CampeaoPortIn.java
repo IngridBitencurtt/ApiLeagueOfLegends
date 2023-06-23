@@ -22,4 +22,6 @@ public interface CampeaoPortIn {
     void deletaCampeao(String id);
 
     void deletaCampeaoPorNome(String nome);
+
+    void atualizaCampeaoPorNome(String nome, Campeao campeao);
 }

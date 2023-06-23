@@ -26,4 +26,6 @@ public interface CampeaoPortOut {
     void deletaCampeao(String id);
 
     void deletaCampeaoPorNome(String nome);
+
+    void atualizaCampeaoNome(String nome, Campeao campeao);
 }

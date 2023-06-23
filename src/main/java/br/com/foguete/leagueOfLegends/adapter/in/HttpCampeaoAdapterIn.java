@@ -103,4 +103,11 @@ public class HttpCampeaoAdapterIn {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/nome/{nome}")
+    public ResponseEntity<Void> atualizaCampeaoPorNome(@PathVariable("nome") String nome, @RequestBody @Valid CampeaoDto campeaoDto) {
+        Campeao campeao = Campeao.fromDto(campeaoDto);
+        this.campeaoPortIn.atualizaCampeaoPorNome(nome, campeao);
+        return ResponseEntity.noContent().build();
+    }
 }

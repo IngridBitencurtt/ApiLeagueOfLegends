@@ -1,5 +1,6 @@
 package br.com.foguete.leagueOfLegends.domain;
 
+import br.com.foguete.leagueOfLegends.adapter.in.dto.CampeaoDto;
 import br.com.foguete.leagueOfLegends.repository.CampeaoControl;
 
 public class Campeao {
@@ -47,6 +48,19 @@ public class Campeao {
                 .setRegion(campeaoControl.getRegiao())
                 .setLocationDateTimeyearOfLaunch(campeaoControl.getAnoDeLancamento());
     }
+
+    public static Campeao fromDto(CampeaoDto campeaoDto) {
+        return new Campeao()
+                .setName(campeaoDto.getNome())
+                .setGender(campeaoDto.getGenero())
+                .setPosition(campeaoDto.getPosicao())
+                .setSpecies(campeaoDto.getEspecie())
+                .setResource(campeaoDto.getRecurso())
+                .setRangeType(campeaoDto.getTipoDeAlcance())
+                .setRegion(campeaoDto.getRegiao())
+                .setLocationDateTimeyearOfLaunch(campeaoDto.getAnoDeLancamento());
+    }
+
 
     public String getName() {
         return name;

@@ -77,4 +77,21 @@ public class CampeaoCore implements CampeaoPortIn{
         this.campeaoPortOut.deletaCampeaoPorNome(nome);
 
     }
+
+    @Override
+    public void atualizaCampeaoPorNome(String nome, Campeao campeao) {
+        Optional<CampeaoControl> campeaoPorNome =
+                this.campeaoPortOut.findByNome(campeao.getName());
+
+        if (campeaoPorNome.isEmpty()){
+            this.campeaoPortOut.atualizaCampeaoNome(nome,campeao);
+            return;
+        }
+        if (campeaoPorNome.get().getNome().equals(nome)){
+            this.campeaoPortOut.atualizaCampeaoNome(nome,campeao);
+            return;
+        }
+        throw new BusinessException("Campeão "+ campeaoPorNome.get().getNome() + " já existe");
+
+    }
 }
