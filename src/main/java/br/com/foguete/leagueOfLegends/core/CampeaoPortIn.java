@@ -1,6 +1,7 @@
 package br.com.foguete.leagueOfLegends.core;
 
 import br.com.foguete.leagueOfLegends.domain.Campeao;
+import br.com.foguete.leagueOfLegends.domain.Posicao;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ public interface CampeaoPortIn {
 
     List<Campeao> findAllCampeao(String nome,
                                  String genero,
-                                         String posicao,
+                                         Posicao posicao,
                                          String especie,
                                          String recurso,
                                          String tipoDeAlcance,

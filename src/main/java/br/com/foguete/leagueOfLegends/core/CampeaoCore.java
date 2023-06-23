@@ -3,6 +3,7 @@ package br.com.foguete.leagueOfLegends.core;
 import br.com.foguete.leagueOfLegends.adapter.in.exception.BusinessException;
 import br.com.foguete.leagueOfLegends.adapter.out.CampeaoPortOut;
 import br.com.foguete.leagueOfLegends.domain.Campeao;
+import br.com.foguete.leagueOfLegends.domain.Posicao;
 import br.com.foguete.leagueOfLegends.repository.CampeaoControl;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class CampeaoCore implements CampeaoPortIn{
     @Override
     public List<Campeao> findAllCampeao(String nome,
                                         String genero,
-                                        String posicao,
+                                        Posicao posicao,
                                         String especie,
                                         String recurso,
                                         String tipoDeAlcance,

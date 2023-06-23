@@ -3,6 +3,7 @@ package br.com.foguete.leagueOfLegends.adapter.in;
 import br.com.foguete.leagueOfLegends.adapter.in.dto.CampeaoDto;
 import br.com.foguete.leagueOfLegends.core.CampeaoPortIn;
 import br.com.foguete.leagueOfLegends.domain.Campeao;
+import br.com.foguete.leagueOfLegends.domain.Posicao;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class HttpCampeaoAdapterIn {
     public ResponseEntity<List<CampeaoDto>> consultaGeralCampeoes(
             @RequestParam(value = "nome", required = false) String nome,
             @RequestParam(value = "genero", required = false) String genero,
-            @RequestParam(value = "posicao", required = false) String posicao,
+            @RequestParam(value = "posicao", required = false) Posicao posicao,
             @RequestParam(value = "especie", required = false) String especie,
             @RequestParam(value = "recurso", required = false) String recurso,
             @RequestParam(value = "regiao", required = false) String regiao,

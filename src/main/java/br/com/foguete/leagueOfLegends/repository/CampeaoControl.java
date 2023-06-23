@@ -1,6 +1,7 @@
 package br.com.foguete.leagueOfLegends.repository;
 
 import br.com.foguete.leagueOfLegends.domain.Campeao;
+import br.com.foguete.leagueOfLegends.domain.Posicao;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -21,7 +22,7 @@ public class CampeaoControl {
 
     private String genero;
 
-    private String posicao;
+    private Posicao posicao;
 
     private String especie;
 
@@ -36,7 +37,7 @@ public class CampeaoControl {
     public CampeaoControl(String id,
                           String nome,
                           String genero,
-                          String posicao,
+                          Posicao posicao,
                           String especie,
                           String recurso,
                           String tipoDeAlcance,
@@ -92,11 +93,11 @@ public class CampeaoControl {
         return this;
     }
 
-    public String getPosicao() {
+    public Posicao getPosicao() {
         return posicao;
     }
 
-    public CampeaoControl setPosicao(String posicao) {
+    public CampeaoControl setPosicao(Posicao posicao) {
         this.posicao = posicao;
         return this;
     }

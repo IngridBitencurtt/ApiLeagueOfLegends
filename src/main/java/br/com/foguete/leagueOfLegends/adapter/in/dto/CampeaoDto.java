@@ -1,6 +1,7 @@
 package br.com.foguete.leagueOfLegends.adapter.in.dto;
 
 import br.com.foguete.leagueOfLegends.domain.Campeao;
+import br.com.foguete.leagueOfLegends.domain.Posicao;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -14,7 +15,7 @@ public class CampeaoDto {
 
     private String genero;
 
-    private String posicao;
+    private Posicao posicao;
 
     private String especie;
 
@@ -45,11 +46,11 @@ public class CampeaoDto {
         return this;
     }
 
-    public String getPosicao() {
+    public Posicao getPosicao() {
         return posicao;
     }
 
-    public CampeaoDto setPosicao(String posicao) {
+    public CampeaoDto setPosicao(Posicao posicao) {
         this.posicao = posicao;
         return this;
     }
@@ -104,7 +105,7 @@ public class CampeaoDto {
 
     public CampeaoDto(String nome,
                       String genero,
-                      String posicao,
+                      Posicao posicao,
                       String especie,
                       String recurso,
                       String tipoDeAlcance,

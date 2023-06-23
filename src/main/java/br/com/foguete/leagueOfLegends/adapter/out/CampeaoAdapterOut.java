@@ -3,9 +3,9 @@ package br.com.foguete.leagueOfLegends.adapter.out;
 
 import br.com.foguete.leagueOfLegends.adapter.in.exception.NotFoundException;
 import br.com.foguete.leagueOfLegends.domain.Campeao;
+import br.com.foguete.leagueOfLegends.domain.Posicao;
 import br.com.foguete.leagueOfLegends.repository.CampeaoControl;
 import br.com.foguete.leagueOfLegends.repository.CampeaoRepository;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -29,7 +29,7 @@ public class CampeaoAdapterOut implements CampeaoPortOut {
     @Override
     public List<CampeaoControl> findAllCampeao(String name,
                                                String gender,
-                                               String position,
+                                               Posicao position,
                                                String species,
                                                String resource,
                                                String rangeType,
@@ -98,7 +98,7 @@ public class CampeaoAdapterOut implements CampeaoPortOut {
 
     private Query buildQuery(String name,
                              String gender,
-                             String position,
+                             Posicao position,
                              String species,
                              String resource,
                              String rangeType,
@@ -115,7 +115,7 @@ public class CampeaoAdapterOut implements CampeaoPortOut {
             query.addCriteria(Criteria.where("genero").regex(gender, "i"));
         }
         if (!ObjectUtils.isEmpty(position)) {
-            query.addCriteria(Criteria.where("posicao").regex(position, "i"));
+            query.addCriteria(Criteria.where("posicao").regex(String.valueOf(position), "i"));
         }
         if (!ObjectUtils.isEmpty(species)) {
             query.addCriteria(Criteria.where("especie").regex(species, "i"));

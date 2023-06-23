@@ -7,7 +7,7 @@ public class Campeao {
 
     private String name;
     private String gender;
-    private String position;
+    private Posicao position;
     private String species;
     private String resource;
     private String rangeType;
@@ -17,7 +17,7 @@ public class Campeao {
 
     public Campeao(String name,
                    String gender,
-                   String position,
+                   Posicao position,
                    String species,
                    String resource,
                    String rangeType,
@@ -80,11 +80,11 @@ public class Campeao {
         return this;
     }
 
-    public String getPosition() {
+    public Posicao getPosition() {
         return position;
     }
 
-    public Campeao setPosition(String position) {
+    public Campeao setPosition(Posicao position) {
         this.position = position;
         return this;
     }
