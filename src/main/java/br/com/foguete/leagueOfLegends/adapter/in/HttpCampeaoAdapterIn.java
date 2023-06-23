@@ -96,4 +96,11 @@ public class HttpCampeaoAdapterIn {
 
         return ResponseEntity.ok(campeaoDtoList);
     }
+
+    @DeleteMapping("/nome/{nome}")
+    public ResponseEntity<Void> deletaCampeaoPorNome(@PathVariable("nome") String nome) {
+        this.campeaoPortIn.deletaCampeaoPorNome(nome);
+
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -20,4 +20,6 @@ public interface CampeaoPortIn {
     Campeao buscaPorId(String id);
 
     void deletaCampeao(String id);
+
+    void deletaCampeaoPorNome(String nome);
 }

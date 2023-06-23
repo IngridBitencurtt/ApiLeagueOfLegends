@@ -71,4 +71,10 @@ public class CampeaoCore implements CampeaoPortIn{
         this.campeaoPortOut.deletaCampeao(id);
 
     }
+
+    @Override
+    public void deletaCampeaoPorNome(String nome) {
+        this.campeaoPortOut.deletaCampeaoPorNome(nome);
+
+    }
 }
