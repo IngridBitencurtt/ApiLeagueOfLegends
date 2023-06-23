@@ -75,4 +75,25 @@ public class HttpCampeaoAdapterIn {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<List<CampeaoDto>> buscaCampeoesPorNome(@PathVariable("nome") String nome) {
+        List<Campeao> findAllCampeaoReturn = this.campeaoPortIn.findAllCampeao(nome
+                , null
+                , null
+                , null
+                , null
+                , null
+                , null
+                , null);
+
+        List<CampeaoDto> campeaoDtoList = new ArrayList<>();
+
+        for (Campeao campeao : findAllCampeaoReturn) {
+            CampeaoDto campeaoDto = CampeaoDto.from(campeao);
+            campeaoDtoList.add(campeaoDto);
+        }
+
+        return ResponseEntity.ok(campeaoDtoList);
+    }
 }
